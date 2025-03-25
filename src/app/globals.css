@@ -1,0 +1,499 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+/* モバイルキーボード表示時のスタイル */
+@media (max-width: 768px) {
+  .keyboard-visible {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: transform 0.3s ease;
+  }
+
+  /* iOS向けの調整 */
+  @supports (-webkit-touch-callout: none) {
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .keyboard-visible {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* タッチ操作の最適化 */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+/* Markdown スタイル */
+.markdown-body {
+  @apply text-sm leading-relaxed;
+}
+
+.markdown-body h1 {
+  @apply text-xl font-bold mt-4 mb-2 pb-1 border-b border-border/50;
+}
+
+.markdown-body h2 {
+  @apply text-lg font-bold mt-4 mb-2 pb-1 border-b border-border/30;
+}
+
+.markdown-body h3 {
+  @apply text-base font-semibold mt-3 mb-1.5;
+}
+
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  @apply text-sm font-semibold mt-2 mb-1 text-foreground/90;
+}
+
+.markdown-body p {
+  @apply my-1.5;
+}
+
+.markdown-body p + p {
+  @apply mt-3;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  @apply pl-6 my-2 space-y-0.5;
+}
+
+.markdown-body ul {
+  @apply list-disc;
+}
+
+.markdown-body ol {
+  @apply list-decimal;
+}
+
+.markdown-body li {
+  @apply my-1;
+}
+
+.markdown-body li > ul,
+.markdown-body li > ol {
+  @apply my-1;
+}
+
+.markdown-body blockquote {
+  @apply pl-4 border-l-4 border-primary/20 my-2 text-foreground/80 italic bg-primary/5 py-1.5 pr-2 rounded-r-md;
+}
+
+.markdown-body pre {
+  @apply bg-secondary/80 p-3 rounded-md my-2 overflow-x-auto shadow-sm border border-border/10;
+}
+
+.markdown-body code {
+  @apply bg-secondary/70 px-1.5 py-0.5 rounded text-xs font-mono text-foreground/90;
+}
+
+.markdown-body pre code {
+  @apply bg-transparent p-0 text-sm block;
+}
+
+.markdown-body a {
+  @apply text-primary underline decoration-primary/30 hover:decoration-primary/70 transition-all;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse my-4 rounded-md overflow-hidden border border-border;
+}
+
+.markdown-body th,
+.markdown-body td {
+  @apply border border-border p-2 text-sm;
+}
+
+.markdown-body th {
+  @apply bg-muted font-medium text-foreground/90;
+}
+
+.markdown-body tr:nth-child(even) {
+  @apply bg-muted/30;
+}
+
+.markdown-body img {
+  @apply max-w-full h-auto rounded-md my-2 shadow-sm;
+}
+
+.markdown-body hr {
+  @apply my-3 border-t border-border;
+}
+
+/* コードブロックのシンタックスハイライト風スタイル */
+.markdown-body pre {
+  @apply relative;
+}
+
+.markdown-body pre::before {
+  @apply content-[''] absolute top-0 left-0 w-full h-1 bg-primary/30 rounded-t-md;
+}
+
+.markdown-body pre::after {
+  @apply content-['コード'] absolute top-2 right-3 text-[10px] text-foreground/50 font-mono px-1.5 py-0.5 rounded bg-background/80;
+}
+
+/* シンタックスハイライト風の色 */
+.markdown-body pre code .keyword,
+.markdown-body pre code .function {
+  @apply text-blue-500 dark:text-blue-400;
+}
+
+.markdown-body pre code .string {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.markdown-body pre code .number {
+  @apply text-orange-600 dark:text-orange-400;
+}
+
+.markdown-body pre code .comment {
+  @apply text-gray-500 dark:text-gray-400 italic;
+}
+
+/* コードブロックの行番号風スタイル */
+.markdown-body pre code {
+  @apply pl-10 relative;
+}
+
+.markdown-body pre code::before {
+  @apply content-[''] absolute left-0 top-0 bottom-0 w-8 border-r border-border/30 bg-secondary/50;
+}
+
+/* 特定の言語表示 */
+.markdown-body pre.language-javascript::after,
+.markdown-body pre.language-js::after {
+  @apply content-['JavaScript'];
+}
+
+.markdown-body pre.language-typescript::after,
+.markdown-body pre.language-ts::after {
+  @apply content-['TypeScript'];
+}
+
+.markdown-body pre.language-python::after,
+.markdown-body pre.language-py::after {
+  @apply content-['Python'];
+}
+
+.markdown-body pre.language-html::after {
+  @apply content-['HTML'];
+}
+
+.markdown-body pre.language-css::after {
+  @apply content-['CSS'];
+}
+
+.markdown-body pre.language-json::after {
+  @apply content-['JSON'];
+}
+
+/* インラインコードの特別スタイル */
+.markdown-body p code,
+.markdown-body li code {
+  @apply text-primary-foreground bg-primary/80;
+}
+
+/* リストアイテムのマーカースタイル */
+.markdown-body ul li::marker {
+  @apply text-primary/70;
+}
+
+.markdown-body ol li::marker {
+  @apply text-primary/70 font-semibold;
+}
+
+/* モダンなアニメーション効果 */
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .blur-backdrop {
+    backdrop-filter: blur(8px);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400;
+  }
+
+  .text-gradient-shimmer {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%];
+    animation: shimmer 3s infinite linear;
+  }
+
+  .text-gradient-rainbow {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-blue-500 via-green-500 via-yellow-500 to-red-500 bg-[length:200%_100%];
+    animation: shimmer 8s infinite linear;
+  }
+
+  .bg-glass {
+    @apply bg-white/10 backdrop-blur-md;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .shimmer-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer-slide 1.5s infinite;
+  }
+
+  .ai-streaming-cursor::after {
+    content: '|';
+    animation: cursor-blink 1s infinite step-end;
+  }
+
+  .streaming-dots::after {
+    content: '';
+    animation: streaming-dots 1.8s infinite steps(1);
+    margin-left: 0.2em;
+    font-weight: bold;
+    color: hsl(var(--primary));
+    opacity: 0.8;
+  }
+
+  .gradient-border {
+    position: relative;
+    border-radius: inherit;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      45deg,
+      hsl(var(--primary)),
+      hsl(217, 91%, 60%),
+      hsl(var(--primary))
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .gradient-border:hover::before {
+    animation: border-spin 3s linear infinite;
+    opacity: 1;
+  }
+
+  .particle-bg {
+    position: relative;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: rgba(var(--primary), 0.2);
+    border-radius: 50%;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(var(--primary), 0.3), 0 0 20px rgba(var(--primary), 0.2),
+      0 0 30px rgba(var(--primary), 0.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes shimmer-slide {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes streaming-dots {
+  0% {
+    content: '.';
+  }
+  25% {
+    content: '..';
+  }
+  50% {
+    content: '...';
+  }
+  75% {
+    content: '';
+  }
+}
+
+@keyframes border-spin {
+  0% {
+    background: linear-gradient(0deg, hsl(var(--primary)), hsl(217, 91%, 60%), hsl(var(--primary)));
+  }
+  100% {
+    background: linear-gradient(
+      360deg,
+      hsl(var(--primary)),
+      hsl(217, 91%, 60%),
+      hsl(var(--primary))
+    );
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px rgba(var(--primary), 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px 10px rgba(var(--primary), 0.2);
+  }
+}
