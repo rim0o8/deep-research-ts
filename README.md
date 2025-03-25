@@ -1,94 +1,58 @@
-# ChatGPT風Webアプリケーション
+# Deep Research with TypeScript
 
-Next.jsで構築されたChatGPT風のWebアプリケーションです。バックエンドを差し替え可能な抽象化された設計になっています。
+[日本語](README_JA.md) | English
 
-## 機能
+A sophisticated AI research agent built with TypeScript that automates comprehensive information gathering, analysis, and report generation.
 
-- チャットインターフェース
-- 会話履歴の保存と管理
-- コードのシンタックスハイライト
-- マークダウン対応
-- レスポンシブデザイン
-- ダークモード対応
+<p align="center">
+  <img src="./demo.png" alt="Deep Research デモ" width="600" />
+</p>
 
-## 技術スタック
+## 🌟 Try it Live
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- NextAuth.js (認証)
+**A more refined version of Deep Research is already deployed and available at:**
 
-## 環境変数
+[https://logion.dev](https://logion.dev)
 
-`.env.local`ファイルを作成し、以下の環境変数を設定してください：
+Visit the live site to experience the full capabilities without setting up locally!
 
-```
-# NextAuth.js設定
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_nextauth_secret
+## 🚀 Getting Started
 
-# Google OAuth
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
+### Prerequisites
 
-# API URL
-NEXT_PUBLIC_API_URL=http://localhost:8080/api
+- Node.js 18+
+- npm or bun
 
+### Installation
 
-## 開発モード
-
-開発モードでは、実際のバックエンドがなくてもモックサービスを使用してアプリケーションを動作させることができます。
+1. Clone the repository
 
 ```bash
-# モックモードを有効にする
-NEXT_PUBLIC_USE_MOCK_API=true
-NEXT_PUBLIC_USE_MOCK_AUTH=true
+git clone https://github.com/rim0o8/deep-research-ts.git
+cd deep-research-ts
+```
 
-# 開発サーバーを起動
+2. Install dependencies
+
+```bash
+npm install
+# or
+bun install
+```
+
+3. Create a `.env.local` file with your API keys (see Environment Variables section)
+
+4. Start the development server
+
+```bash
 npm run dev
-```
-
-## 本番モード
-
-本番環境では、実際のバックエンドAPIに接続します。
-
-```bash
-# モックモードを無効にする
-NEXT_PUBLIC_USE_MOCK_API=false
-NEXT_PUBLIC_USE_MOCK_AUTH=false
-
-# 本番ビルドを作成
-npm run build
-
-# 本番サーバーを起動
-npm start
-```
-
-## サービス抽象化
-
-このアプリケーションは以下のサービスを抽象化しています：
-
-1. **ChatService** - チャットAPIとの通信を担当
-2. **AuthService** - 認証機能を担当
-3. **StorageService** - 会話履歴の保存を担当
-
-各サービスには本番実装とモック実装があり、環境変数によって切り替えることができます。
-
-## カスタマイズ
-
-バックエンドを独自のAPIに接続するには、`src/lib/services/chat-service.ts`の`ProductionChatService`クラスを修正してください。
-
-```bash
+# or
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-- build the project:
+## 📝 License
 
-```bash
-bun run build
-```
-
-/
+This project is [MIT](LICENSE) licensed.
+\*\*
