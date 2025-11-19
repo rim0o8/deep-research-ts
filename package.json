@@ -105,7 +105,7 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "autoprefixer": "^10.4.21",
     "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.24",
+    "eslint-config-next": "16.0.3",
     "eslint-plugin-storybook": "^0.11.6",
     "postcss": "^8.5.3",
     "shadcn-ui": "^0.9.5",
