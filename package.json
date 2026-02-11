@@ -16,7 +16,7 @@
     "@anthropic-ai/sdk": "^0.39.0",
     "@hookform/resolvers": "^3.10.0",
     "@langchain/anthropic": "^0.3.15",
-    "@langchain/community": "^0.3.37",
+    "@langchain/community": "^1.1.14",
     "@langchain/core": "^0.3.43",
     "@langchain/deepseek": "^0.0.1",
     "@langchain/langgraph": "0.2.54",
